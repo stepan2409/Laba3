@@ -26,12 +26,25 @@ namespace Laba3
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Computer.GetInstance().ScreenBrightnessUp((int)numericUpDown1.Value);
+            if (int.TryParse(textBox2.Text, out int value) && value >= 0)
+            {
+                Computer.GetInstance().ScreenBrightnessUp(value);
+            } else
+            {
+                MessageBox.Show("Изменение яркости должно быть целым неотрицательным числом!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Computer.GetInstance().ScreenBrightnessDown((int)numericUpDown1.Value);
+            if (int.TryParse(textBox2.Text, out int value) && value >= 0)
+            {
+                Computer.GetInstance().ScreenBrightnessDown(value);
+            }
+            else
+            {
+                MessageBox.Show("Изменение яркости должно быть целым неотрицательным числом!", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -40,10 +53,18 @@ namespace Laba3
             {
                 Computer.GetInstance().ScreenPowerDown();
                 button3.Text = "ВКЛЮЧИТЬ ЭКРАН";
+                textBox2.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                label4.Enabled = false;
             } else
             {
                 Computer.GetInstance().ScreenPowerUp();
                 button3.Text = "ВЫКЛЮЧИТЬ ЭКРАН";
+                textBox2.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = true;
+                label4.Enabled = true;
             }
         }
 

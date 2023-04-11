@@ -16,6 +16,8 @@ namespace Laba3
         /// </summary>
         private int currentBrightness;
 
+        private int previousBrightness;
+
         /// <summary>
         /// Событие изменения параметров экрана
         /// </summary>
@@ -28,6 +30,7 @@ namespace Laba3
         {
             this.powerIsOn = false;
             this.currentBrightness = 0;
+            this.previousBrightness = 0;
         }
 
         /// <summary>
@@ -94,8 +97,11 @@ namespace Laba3
             {
                 throw new System.ArgumentException();
             }
-            currentBrightness = Math.Max(currentBrightness - delta, 0);
-            ThrowParamsChangedEvent();
+            if (powerIsOn)
+            {
+                currentBrightness = Math.Max(currentBrightness - delta, 0);
+                ThrowParamsChangedEvent();
+            }
         }
 
         /// <summary>
@@ -110,8 +116,11 @@ namespace Laba3
             {
                 throw new System.ArgumentException();
             }
-            currentBrightness = Math.Min(currentBrightness + delta, 100);
-            ThrowParamsChangedEvent();
+            if (powerIsOn)
+            {
+                currentBrightness = Math.Min(currentBrightness + delta, 100);
+                ThrowParamsChangedEvent();
+            }
         }
 
         /// <summary>
@@ -120,6 +129,7 @@ namespace Laba3
         public void PowerUp()
         {
             powerIsOn = true;
+            currentBrightness = previousBrightness;
             ThrowParamsChangedEvent();
         }
 
@@ -129,6 +139,8 @@ namespace Laba3
         public void PowerDown()
         {
             powerIsOn = false;
+            previousBrightness = currentBrightness;
+            currentBrightness = 0;
             ThrowParamsChangedEvent();
         }
 
