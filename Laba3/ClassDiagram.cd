@@ -27,12 +27,9 @@
   <Class Name="Laba3.Form1" Collapsed="true">
     <Position X="2.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAABAAAACAAAASEAA4AAAAEHEAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAABAAAACAAAASAAA4AAAAEHEAAAAAAAA=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="computer" />
-    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

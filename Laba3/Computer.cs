@@ -42,11 +42,11 @@ namespace Laba3
         {
             get
             {
-                return computerScreen.CurrentBrightness;
+                return GetInstance().computerScreen.CurrentBrightness;
             }
             set
             {
-                computerScreen.CurrentBrightness = value;
+                GetInstance().computerScreen.CurrentBrightness = value;
             }
         }
 
@@ -57,11 +57,11 @@ namespace Laba3
         {
             get
             {
-                return computerScreen.PowerIsOn;
+                return GetInstance().computerScreen.PowerIsOn;
             }
             set
             {
-                computerScreen.PowerIsOn = value;
+                GetInstance().computerScreen.PowerIsOn = value;
             }
         }
 
@@ -72,11 +72,11 @@ namespace Laba3
         {
             get
             {
-                return computerName;
+                return GetInstance().computerName;
             }
             set
             {
-                computerName = value;
+                GetInstance().computerName = value;
                 ThrowParamsChanged();
             }
         }
@@ -99,8 +99,8 @@ namespace Laba3
         /// </summary>
         public void ScreenPowerUp()
         {
-            computerScreen.PowerUp();
-            ScreenPowerIsOn = computerScreen.PowerIsOn;
+            GetInstance().computerScreen.PowerUp();
+            ScreenPowerIsOn = GetInstance().computerScreen.PowerIsOn;
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Laba3
         /// </summary>
         public void ScreenPowerDown()
         {
-            computerScreen.PowerDown();
-            ScreenPowerIsOn = computerScreen.PowerIsOn;
+            GetInstance().computerScreen.PowerDown();
+            ScreenPowerIsOn = GetInstance().computerScreen.PowerIsOn;
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Laba3
         /// </summary>
         public void ScreenBrightnessUp(int delta)
         {
-            computerScreen.BrightnessUp(delta);
+            GetInstance().computerScreen.BrightnessUp(delta);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Laba3
         /// </summary>
         public void ScreenBrightnessDown(int delta)
         {
-            computerScreen.BrightnessDown(delta);
+            GetInstance().computerScreen.BrightnessDown(delta);
         }
 
         /// <summary>
@@ -133,7 +133,8 @@ namespace Laba3
         /// </summary>
         public override string ToString()
         {
-            return "Название компьютера: " + computerName + "\r\nПараметры экрана:\r\n" + computerScreen.ToString();
+            return "Название компьютера: " + GetInstance().computerName + "\r\nПараметры экрана:\r\n" +
+                GetInstance().computerScreen.ToString();
         }
 
         private static void OnScreenParamsChanged(object sender, EventArgs e)
